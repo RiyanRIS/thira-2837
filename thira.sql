@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 12, 2022 at 06:45 PM
+-- Generation Time: Sep 16, 2022 at 11:34 PM
 -- Server version: 8.0.30-0ubuntu0.20.04.2
 -- PHP Version: 7.4.3
 
@@ -83,6 +83,13 @@ CREATE TABLE `komentar` (
   `isi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
+--
+-- Dumping data for table `komentar`
+--
+
+INSERT INTO `komentar` (`id`, `id_lahan`, `email`, `isi`) VALUES
+(1, 2, 'xkunthil18@gmail.com', 'desa ini memang sebagus itu untuk dijadikan tempat healing');
+
 -- --------------------------------------------------------
 
 --
@@ -153,7 +160,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `nama_lengkap`, `role`) VALUES
-(1, '1234', '$2y$10$08pxm8ToqyvdpF68nN/V8evAKV/iDHtzJZjAAcB3zSuyJJYtJY0wa', 'Administrator', 'superadmin');
+(1, '1234', '$2y$10$08pxm8ToqyvdpF68nN/V8evAKV/iDHtzJZjAAcB3zSuyJJYtJY0wa', 'Administrator', 'admin');
 
 -- --------------------------------------------------------
 
@@ -259,7 +266,7 @@ ALTER TABLE `info_desa`
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lahan`
