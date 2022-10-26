@@ -31,9 +31,9 @@
 				<label for="provinsi">Provinsi<small style="color:red;vertical-align: top;">*</small></label>
 				<input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="Masukkan Provinsi" value="<?= $record['provinsi'] ?>" autocomplete="off">
 			</div>
-			<div class="form-group" id="notifikasi_deskripsi">
-				<label for="deskripsi">Deskripsi</label>
-				<textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"><?=$record['deskripsi']?></textarea>
+			<div class="form-group" id="notifikasi_deskripsii">
+				<label for="deskripsii">Deskripsi</label>
+				<textarea name="deskripsii" id="deskripsii" cols="30" rows="10" class="form-control"><?= $record['deskripsi'] ?></textarea>
 			</div>
 			<div class="row mb-3">
 				<div class="col-6">
@@ -75,11 +75,12 @@
 			</main>
 
 <?= view("admin/templates/foot") ?>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/4.9.11-104/tinymce.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/afhgw0p2lqwprz9nv7njrplb41zbz0hg6iipwappge5gp7ix/tinymce/4.9.11-104/tinymce.min.js"></script>
 <script>
     tinymce.init({
-  selector: 'textarea',  // change this value according to your HTML
+  selector: 'textarea#deskripsii',  // change this value according to your HTML
 });
+
 
 	function readURL(input, id) {
         if (input.files && input.files[0]) {
@@ -108,6 +109,10 @@
         var formId = $(this)
         var action = $(formId).attr('action')
 
+        var myContent = tinymce.activeEditor.getContent();
+
+        dataToSend.append('deskripsi', myContent)
+        
 		$('#modalnya .modal-footer #submit').prop('disabled', true);
 
         $.ajax({
