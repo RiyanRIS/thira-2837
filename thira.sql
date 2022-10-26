@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 16, 2022 at 11:34 PM
--- Server version: 8.0.30-0ubuntu0.20.04.2
--- PHP Version: 7.4.3
+-- Host: 127.0.0.1
+-- Generation Time: Oct 26, 2022 at 03:37 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,22 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `desa` (
-  `id` int NOT NULL,
-  `id_user` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama` varchar(45) NOT NULL,
   `kecamatan` varchar(45) NOT NULL,
   `kabupaten` varchar(45) NOT NULL,
   `provinsi` varchar(45) NOT NULL,
-  `deskripsi` text CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `foto` text NOT NULL
+  `deskripsi` text NOT NULL,
+  `foto` text NOT NULL,
+  `logo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `desa`
 --
 
-INSERT INTO `desa` (`id`, `id_user`, `nama`, `kecamatan`, `kabupaten`, `provinsi`, `deskripsi`, `foto`) VALUES
-(1, 1, 'Sukamiskin', 'Dinoloyo', 'Pacitan', 'Jawa Timur', 'Desa yang diapit tebing sehingga cocok untuk pariwisata bernuansa hutan rimbun yang sejuk', '1662887376_1a84b3c70d284b28dbc3.jpg');
+INSERT INTO `desa` (`id`, `id_user`, `nama`, `kecamatan`, `kabupaten`, `provinsi`, `deskripsi`, `foto`, `logo`) VALUES
+(1, 1, 'Sukamiskin', 'Dinoloyo', 'Pacitan', 'Jawa Timur', 'Desa yang diapit tebing sehingga cocok untuk pariwisata bernuansa hutan rimbun yang sejuk', '1662887376_1a84b3c70d284b28dbc3.jpg', '1666748130_116e28f119d8acd77583.png');
 
 -- --------------------------------------------------------
 
@@ -52,13 +53,13 @@ INSERT INTO `desa` (`id`, `id_user`, `nama`, `kecamatan`, `kabupaten`, `provinsi
 --
 
 CREATE TABLE `info_desa` (
-  `id` int NOT NULL,
-  `id_user` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
   `nama` varchar(45) NOT NULL,
   `kecamatan` varchar(45) NOT NULL,
   `kabupaten` varchar(45) NOT NULL,
   `provinsi` varchar(45) NOT NULL,
-  `deskripsi` text CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `deskripsi` text NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
@@ -77,8 +78,8 @@ INSERT INTO `info_desa` (`id`, `id_user`, `nama`, `kecamatan`, `kabupaten`, `pro
 --
 
 CREATE TABLE `komentar` (
-  `id` int NOT NULL,
-  `id_lahan` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_lahan` int(11) NOT NULL,
   `email` varchar(45) NOT NULL,
   `isi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
@@ -97,9 +98,9 @@ INSERT INTO `komentar` (`id`, `id_lahan`, `email`, `isi`) VALUES
 --
 
 CREATE TABLE `lahan` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `desa_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `desa_id` int(11) NOT NULL,
   `kategori` varchar(45) NOT NULL,
   `kepemilikan` varchar(45) NOT NULL,
   `alamat_lengkap` text NOT NULL,
@@ -128,8 +129,8 @@ INSERT INTO `lahan` (`id`, `user_id`, `desa_id`, `kategori`, `kepemilikan`, `ala
 --
 
 CREATE TABLE `petani` (
-  `id` int NOT NULL,
-  `id_lahan` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `id_lahan` int(11) NOT NULL,
   `nama_lengkap` varchar(45) NOT NULL,
   `no_telepon` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
@@ -148,7 +149,7 @@ INSERT INTO `petani` (`id`, `id_lahan`, `nama_lengkap`, `no_telepon`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(45) NOT NULL,
   `password` text NOT NULL,
   `nama_lengkap` varchar(45) NOT NULL,
@@ -169,10 +170,10 @@ INSERT INTO `user` (`id`, `username`, `password`, `nama_lengkap`, `role`) VALUES
 --
 
 CREATE TABLE `wisata` (
-  `id` int NOT NULL,
-  `user_id` int NOT NULL,
-  `desa_id` int NOT NULL,
-  `nama_wisata` varchar(45) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `desa_id` int(11) NOT NULL,
+  `nama_wisata` varchar(45) NOT NULL,
   `kategori` varchar(45) NOT NULL,
   `alamat_lengkap` text NOT NULL,
   `dusun` varchar(45) NOT NULL,
@@ -254,43 +255,43 @@ ALTER TABLE `wisata`
 -- AUTO_INCREMENT for table `desa`
 --
 ALTER TABLE `desa`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `info_desa`
 --
 ALTER TABLE `info_desa`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `lahan`
 --
 ALTER TABLE `lahan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `petani`
 --
 ALTER TABLE `petani`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `wisata`
 --
 ALTER TABLE `wisata`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

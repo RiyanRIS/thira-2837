@@ -9,7 +9,7 @@ $cfg = new \SConfig();
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="javascript:void(0)">
 					<?php $namasistem = (@$nama_sistem ?: "Silihay"); ?>
-					<span class="align-middle" style="letter-spacing: 2px;"><?= strtoupper($namasistem) ?></span>
+					<img src="<?=base_url("uploads/desa/" . session()->get('desa_logo'));?>" alt="" width="200px">
 				</a>
 
 				<ul class="sidebar-nav">

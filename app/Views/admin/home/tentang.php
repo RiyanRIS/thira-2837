@@ -33,7 +33,7 @@
 			</div>
 			<div class="form-group" id="notifikasi_deskripsi">
 				<label for="deskripsi">Deskripsi</label>
-				<textarea name="deskripsi" id="deskripsi" cols="30" rows="5" class="form-control"><?=$record['deskripsi']?></textarea>
+				<textarea name="deskripsi" id="deskripsi" cols="30" rows="10" class="form-control"><?=$record['deskripsi']?></textarea>
 			</div>
 			<div class="row mb-3">
 				<div class="col-6">
@@ -49,6 +49,21 @@
 				<input type="file" name="foto" id="foto" class="form-control foto-preview">
 				<small style="vertical-align: top">*kosongi jika tidak merubah gambar</small>
 			</div>
+
+            <div class="row mb-3">
+				<div class="col-6">
+					<label for="gambar" class="small">Logo Awal</label> <br>
+					<img src="<?=base_url("uploads/desa/" . $record['logo'])?>" alt="" width="200" height="" id="img-foto-awal">
+				</div>
+				<div class="col-6">
+					<label for="gambar" class="small">Logo Baru</label> <br>
+					<img id="img-logo-preview" src="#" alt="" width="200" height="" style="display: none;" />
+				</div>
+			</div>
+			<div class="form-group" id="notifikasi_logo">
+				<input type="file" name="logo" id="logo" class="form-control logo-preview">
+				<small style="vertical-align: top">*200 x 50 px</small>
+			</div>
 			<button type="submit" class="btn btn-primary mt-3" id="submit">Simpan</button>
 									</form>
 									</div>
@@ -60,8 +75,12 @@
 			</main>
 
 <?= view("admin/templates/foot") ?>
-
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/4.9.11-104/tinymce.min.js"></script>
 <script>
+    tinymce.init({
+  selector: 'textarea',  // change this value according to your HTML
+});
+
 	function readURL(input, id) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -77,6 +96,10 @@
 
     $("#foto").change(function() {
         readURL(this, "img-foto-preview");
+    });
+
+    $("#logo").change(function() {
+        readURL(this, "img-logo-preview");
     });
 
 	$('#myForm, #myForm1, #myForm2, #myForm3').submit(function(e){

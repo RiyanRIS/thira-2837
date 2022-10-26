@@ -31,6 +31,7 @@ class Home extends BaseController
     public function ubah()
     {
         $this->validation->setRules($this->desa->rules_tambah_ubah);
+        // echo json_encode($this->request->getPost()); die();
 
         if ($this->request->getPost() && $this->validation->withRequest($this->request)->run()) {
             $id = 1;
@@ -43,6 +44,7 @@ class Home extends BaseController
             unset($additionalData['id']);
 
             $img = $this->request->getFile('foto');
+            $img2 = $this->request->getFile('logo');
 
             if(!empty($img->getName())){
                 $validationRule = [
@@ -75,6 +77,52 @@ class Home extends BaseController
                         unlink(ROOTPATH . 'public/uploads/temp/' . $newName);
 
                         $img_lama = $sebelumupdate['foto'];
+                        $target_file = ROOTPATH . 'public/uploads/desa/' . $img_lama;
+                        if(file_exists($target_file)){
+                            unlink($target_file);
+                        }
+                    }
+                } else {
+                    $msg = [
+                        'status' => false, 
+                        'errors' => $this->validation->getErrors(),
+                    ];
+                    echo json_encode($msg);
+                    die();
+                }
+            }
+
+            if(!empty($img2->getName())){
+                $validationRule = [
+                    'logo' => [
+                        'label' => 'Logo desa',
+                        'rules' => 'is_image[logo]'
+                            . '|max_size[logo,10000]'
+                    ],
+                ];
+                if ($this->validate($validationRule)) {
+                    if (!$img2->isValid()) {
+                        $err = [
+                            'logo' => $img2->getErrorString()
+                        ];
+                        $msg = [
+                            'status' => false, 
+                            'errors' => $err,
+                        ];
+                        echo json_encode($msg);
+                        die();
+                    } else {
+                        $newName = $img2->getRandomName();
+                        $img2->move(ROOTPATH . 'public/uploads/temp/', $newName);
+                        $additionalData['logo'] = $newName;
+
+                        $this->image
+                            ->withFile(ROOTPATH . 'public/uploads/temp/' . $newName)
+                            ->resize(200, 50, false)
+                            ->save(ROOTPATH . 'public/uploads/desa/' . $newName);
+                        unlink(ROOTPATH . 'public/uploads/temp/' . $newName);
+
+                        $img_lama = $sebelumupdate['logo'];
                         $target_file = ROOTPATH . 'public/uploads/desa/' . $img_lama;
                         if(file_exists($target_file)){
                             unlink($target_file);

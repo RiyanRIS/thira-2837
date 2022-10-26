@@ -88,5 +88,12 @@ abstract class BaseController extends Controller
         $this->lahan = new LahanModel();
         $this->petani = new PetaniModel();
         $this->komentar = new KomentarModel();
+
+        $awal = $this->desa->find(1);
+        $data_awal = [
+            'desa_logo' => $awal['logo'],
+        ];
+
+        session()->set($data_awal);
     }
 }

@@ -11,7 +11,7 @@ class DesaModel extends Model
 
 	protected $returnType     = 'array';
 
-	protected $allowedFields = ['id', 'id_user', 'nama', 'kecamatan', 'kabupaten', 'provinsi', 'deskripsi', 'foto'];
+	protected $allowedFields = ['id', 'id_user', 'nama', 'kecamatan', 'kabupaten', 'provinsi', 'deskripsi', 'foto', 'logo'];
 
 	public $rules_tambah_ubah = [
         'nama' => [

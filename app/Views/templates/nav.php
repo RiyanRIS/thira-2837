@@ -5,8 +5,7 @@ $cfg = new \SConfig();
 ?>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
   <div class="container-fluid">
-  <?php $namasistem = (@$nama_sistem ?: "Silihay"); ?>
-    <a class="navbar-brand" href="javascript:void(0)" style="letter-spacing: 2px;"><?= strtoupper($namasistem) ?></a>
+  <img src="<?=base_url("uploads/desa/" . session()->get('desa_logo'));?>" alt="" width="200px">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

@@ -7,7 +7,7 @@ $cfg = new \SConfig();
 
 <main class="container">
   <div class="bg-light p-5 rounded">
-      <h2 class="mb-3">List Wisata</h2>
+      <center><h2 class="mb-3">Wisata Desa Kami</h2></center>
 
       <div class="row">
 

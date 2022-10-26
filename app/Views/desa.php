@@ -17,12 +17,10 @@ $cfg = new \SConfig();
           <img style="width:100%" src="<?=base_url("uploads/desa/" . $record[0]['foto'])?>" alt="">
         </div>
       </div>
-
   </div>
 </main>
 
-
 <?=view('templates/foot')?>
-      
+  
   </body>
 </html>
