@@ -9,7 +9,7 @@ $cfg = new \SConfig();
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
-    <title><?=($judul ?: "Home")?> - <?= ($cfg->_namaApp ?: "Silihay") ?></title>
+    <title><?=($judul ?: "Home")?> - <?= (session()->get('desa_nama') ?: "Silihay") ?></title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/navbar-fixed/">
 

@@ -18,7 +18,7 @@ $cfg = new \SConfig();
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title><?= (@$judul ?: "Dashboard") ?> - <?= (@$cfg->_namaApp ?: "Silihay") ?></title>
+	<title><?= (@$judul ?: "Dashboard") ?> - <?= (session()->get('desa_nama') ?: "Silihay") ?></title>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.2/css/bootstrap.min.css" integrity="sha512-rt/SrQ4UNIaGfDyEXZtNcyWvQeOq0QLygHluFQcSjaGB04IxWhal71tKuzP6K8eYXYB6vJV4pHkXcmFGGQ1/0w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 

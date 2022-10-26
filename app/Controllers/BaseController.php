@@ -91,6 +91,7 @@ abstract class BaseController extends Controller
 
         $awal = $this->desa->find(1);
         $data_awal = [
+            'desa_nama' => $awal['nama'],
             'desa_logo' => $awal['logo'],
         ];
 
